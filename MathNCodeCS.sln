@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathNCodeCS", "MathNCodeCS\MathNCodeCS.csproj", "{F33F8A6D-0924-4E1B-BB9F-D09C189A5D49}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloWorld", "HelloWorld\HelloWorld.csproj", "{E8C69352-B4C4-4638-88D9-0A566A63EC85}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{98E2B4BD-C5F9-42E1-A5FB-B90A8CB1233A}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		MathNCodeCS.sln.DotSettings = MathNCodeCS.sln.DotSettings
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F33F8A6D-0924-4E1B-BB9F-D09C189A5D49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F33F8A6D-0924-4E1B-BB9F-D09C189A5D49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F33F8A6D-0924-4E1B-BB9F-D09C189A5D49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F33F8A6D-0924-4E1B-BB9F-D09C189A5D49}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8C69352-B4C4-4638-88D9-0A566A63EC85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8C69352-B4C4-4638-88D9-0A566A63EC85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8C69352-B4C4-4638-88D9-0A566A63EC85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8C69352-B4C4-4638-88D9-0A566A63EC85}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
