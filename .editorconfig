@@ -392,6 +392,7 @@ resharper_int_align_switch_sections = false
 #### ReSharper - Line Breaks - https://www.jetbrains.com/help/resharper/EditorConfig_CSHARP_LineBreaksPageSchema.html ####
 ##########################################################################################################################
 
+resharper_csharp_insert_final_newline = true
 resharper_keep_user_linebreaks = true
 resharper_keep_existing_arrangement = false
 resharper_keep_existing_linebreaks = false
