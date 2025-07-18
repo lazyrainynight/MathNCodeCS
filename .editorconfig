@@ -95,32 +95,118 @@ max_line_length = 240
 
 
 
-################################################################################################################
-#### Naming conventions - https://docs.microsoft.com/en-us/visualstudio/ide/editorconfig-naming-conventions ####
-################################################################################################################
+###########################################################################################################################
+#### Naming conventions - https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/style-rules/naming-rules ####
+###########################################################################################################################
 
-# # public symbols must be capitalized
-# dotnet_naming_rule.public_members_must_be_capitalized.symbols = public_symbols
-# dotnet_naming_symbols.public_symbols.applicable_kinds = class
-# dotnet_naming_symbols.public_symbols.applicable_accessibilities = public
-# dotnet_naming_rule.public_members_must_be_capitalized.style = first_word_upper_case_style
-# dotnet_naming_style.first_word_upper_case_style.capitalization = first_word_upper
-# dotnet_naming_rule.public_members_must_be_capitalized.severity = suggestion
+## Defining naming styles
+dotnet_naming_style.pascal_case_style.capitalization = pascal_case
+dotnet_naming_style.camel_case_style.capitalization = camel_case
+dotnet_naming_style.underscore_pascal_case_style.capitalization = pascal_case
+dotnet_naming_style.underscore_pascal_case_style.required_prefix = _
+dotnet_naming_style.i_pascal_case_style.capitalization = pascal_case
+dotnet_naming_style.i_pascal_case_style.required_prefix = I
+dotnet_naming_style.t_pascal_case_style.capitalization = pascal_case
+dotnet_naming_style.t_pascal_case_style.required_prefix = T
+dotnet_naming_style.underscore_camel_case_style.capitalization = camel_case
+dotnet_naming_style.underscore_camel_case_style.required_prefix = _
+dotnet_naming_style.pascal_case_async_style.capitalization = pascal_case
+dotnet_naming_style.pascal_case_async_style.required_suffix = Async
+dotnet_naming_style.camel_case_async_style.capitalization = camel_case
+dotnet_naming_style.camel_case_async_style.required_suffix = Async
+dotnet_naming_style.underscore_pascal_case_async_style.capitalization = pascal_case
+dotnet_naming_style.underscore_pascal_case_async_style.required_prefix = _
+dotnet_naming_style.underscore_pascal_case_async_style.required_suffix = Async
+dotnet_naming_style.underscore_camel_case_async_style.capitalization = camel_case
+dotnet_naming_style.underscore_camel_case_async_style.required_prefix = _
+dotnet_naming_style.underscore_camel_case_async_style.required_suffix = Async
 
-# # private field must be prefixed by underscore
-# dotnet_naming_rule.private_field_must_be_prefixed_by_underscore.symbols = private_fields
-# dotnet_naming_symbols.private_fields.applicable_kinds = field
-# dotnet_naming_symbols.private_fields.applicable_accessibilities = private
-# dotnet_naming_rule.private_field_must_be_prefixed_by_underscore.style = prefixed_by_underscore
-# dotnet_naming_style.prefixed_by_underscore.capitalization = camel_case
-# dotnet_naming_style.prefixed_by_underscore.required_prefix = _
-# dotnet_naming_rule.private_field_must_be_prefixed_by_underscore.severity = suggestion
+# public symbols must be PascalCase
+dotnet_naming_symbols.public_symbols.applicable_kinds = class,struct,enum,method,property,field,event,delegate
+dotnet_naming_symbols.public_symbols.applicable_accessibilities = public
+dotnet_naming_rule.public_symbols_must_be_pascal_case.symbols = public_symbols
+dotnet_naming_rule.public_symbols_must_be_pascal_case.style = pascal_case_style
+dotnet_naming_rule.public_symbols_must_be_pascal_case.severity = warning
+
+# interfaces must be IPascalCase
+dotnet_naming_symbols.interfaces.applicable_kinds = interface
+dotnet_naming_symbols.interfaces.applicable_accessibilities = *
+dotnet_naming_rule.interfaces_must_be_i_pascal_case.symbols = interfaces
+dotnet_naming_rule.interfaces_must_be_i_pascal_case.style = i_pascal_case_style
+dotnet_naming_rule.interfaces_must_be_i_pascal_case.severity = warning
+
+# type parameters must be TPascalCase
+dotnet_naming_symbols.type_parameters.applicable_kinds = type_parameter
+dotnet_naming_symbols.type_parameters.applicable_accessibilities = *
+dotnet_naming_rule.type_parameters_must_be_t_pascal_case.symbols = type_parameters
+dotnet_naming_rule.type_parameters_must_be_t_pascal_case.style = t_pascal_case_style
+dotnet_naming_rule.type_parameters_must_be_t_pascal_case.severity = warning
+
+# private fields must be _camelCase
+dotnet_naming_symbols.private_fields.applicable_kinds = field
+dotnet_naming_symbols.private_fields.applicable_accessibilities = private
+dotnet_naming_rule.private_fields_must_be_underscore_camel_case.symbols = private_fields
+dotnet_naming_rule.private_fields_must_be_underscore_camel_case.style = underscore_camel_case_style
+dotnet_naming_rule.private_fields_must_be_underscore_camel_case.severity = warning
+
+# const field must be PascalCase
+dotnet_naming_symbols.const_field.applicable_kinds = field
+dotnet_naming_symbols.const_field.applicable_accessibilities = *
+dotnet_naming_symbols.const_field.required_modifiers = const
+dotnet_naming_rule.const_field_must_be_pascal_case.symbols = const_field
+dotnet_naming_rule.const_field_must_be_pascal_case.style = pascal_case_style
+dotnet_naming_rule.const_field_must_be_pascal_case.severity = warning
+
+# static readonly field must be PascalCase
+dotnet_naming_symbols.static_readonly_field.applicable_kinds = field
+dotnet_naming_symbols.static_readonly_field.applicable_accessibilities = *
+dotnet_naming_symbols.static_readonly_field.required_modifiers = static,readonly
+dotnet_naming_rule.static_readonly_field_must_be_pascal_case.symbols = static_readonly_field
+dotnet_naming_rule.static_readonly_field_must_be_pascal_case.style = pascal_case_style
+dotnet_naming_rule.static_readonly_field_must_be_pascal_case.severity = warning
+
+# private method must be _PascalCase
+dotnet_naming_symbols.private_methods.applicable_kinds = method
+dotnet_naming_symbols.private_methods.applicable_accessibilities = private
+dotnet_naming_rule.private_methods_must_be_underscore_pascal_case.symbols = private_methods
+dotnet_naming_rule.private_methods_must_be_underscore_pascal_case.style = underscore_pascal_case_style
+dotnet_naming_rule.private_methods_must_be_underscore_pascal_case.severity = warning
+
+# local method must be _camelCase
+dotnet_naming_symbols.local_methods.applicable_kinds = method
+dotnet_naming_symbols.local_methods.applicable_accessibilities = local
+dotnet_naming_rule.local_methods_must_be_underscore_camel_case.symbols = local_methods
+dotnet_naming_rule.local_methods_must_be_underscore_camel_case.style = underscore_camel_case_style
+dotnet_naming_rule.local_methods_must_be_underscore_camel_case.severity = warning
+
+# public async method must be PascalCase with async suffix
+dotnet_naming_symbols.public_async_methods.applicable_kinds = method
+dotnet_naming_symbols.public_async_methods.applicable_accessibilities = public
+dotnet_naming_symbols.public_async_methods.required_modifiers = async
+dotnet_naming_rule.public_async_method_must_be_pascal_case_with_async_suffix.symbols = public_async_methods
+dotnet_naming_rule.public_async_method_must_be_pascal_case_with_async_suffix.style = pascal_case_async_style
+dotnet_naming_rule.public_async_method_must_be_pascal_case_with_async_suffix.severity = warning
+
+# private async method must be _PascalCase with async suffix
+dotnet_naming_symbols.private_async_methods.applicable_kinds = method
+dotnet_naming_symbols.private_async_methods.applicable_accessibilities = private
+dotnet_naming_symbols.private_async_methods.required_modifiers = async
+dotnet_naming_rule.private_async_method_must_be_underscore_pascal_case_with_async_suffix.symbols = private_async_methods
+dotnet_naming_rule.private_async_method_must_be_underscore_pascal_case_with_async_suffix.style = underscore_pascal_case_async_style
+dotnet_naming_rule.private_async_method_must_be_underscore_pascal_case_with_async_suffix.severity = warning
+
+# local async method must be _camelCase with async suffix
+dotnet_naming_symbols.local_async_methods.applicable_kinds = method
+dotnet_naming_symbols.local_async_methods.applicable_accessibilities = local
+dotnet_naming_symbols.local_async_methods.required_modifiers = async
+dotnet_naming_rule.local_async_method_must_be_underscore_camel_case_with_async_suffix.symbols = local_async_methods
+dotnet_naming_rule.local_async_method_must_be_underscore_camel_case_with_async_suffix.style = underscore_camel_case_async_style
+dotnet_naming_rule.local_async_method_must_be_underscore_camel_case_with_async_suffix.severity = warning
 
 
-
-##################################################################################################################################################
-#### Language code styles - https://docs.microsoft.com/en-us/visualstudio/ide/editorconfig-code-style-settings-reference#language-code-styles ####
-##################################################################################################################################################
+#################################################################################################################################################
+#### Language code styles - https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/code-style-rule-options#language-code-styles ####
+#################################################################################################################################################
 
 # this qualifiers
 dotnet_style_qualification_for_field = false:suggestion
@@ -134,7 +220,7 @@ dotnet_style_predefined_type_for_member_access = true:suggestion
 
 # Modifier preferences
 dotnet_style_require_accessibility_modifiers = for_non_interface_members:suggestion
-csharp_preferred_modifier_order = public,private,protected,internal,static,extern,new,virtual,abstract,sealed,override,readonly,unsafe,volatile,async:suggestion
+csharp_preferred_modifier_order = public, private, protected, internal, static, extern, new, virtual, abstract, sealed, override, readonly, unsafe, volatile, async, file, required:suggestion
 dotnet_style_readonly_field = true:suggestion
 
 # Parentheses preferences
@@ -163,10 +249,12 @@ dotnet_style_null_propagation = true:suggestion
 csharp_style_throw_expression = true:suggestion
 csharp_style_conditional_delegate_call = true:suggestion
 
-# Implicit and explicit types
-csharp_style_var_for_built_in_types = false:none
-csharp_style_var_when_type_is_apparent = true:suggestion
-csharp_style_var_elsewhere = true:none
+# var - Implicit and explicit types
+# csharp_style_var_for_built_in_types = false:hint
+# csharp_style_var_when_type_is_apparent = true:hint
+# csharp_style_var_elsewhere = true:hint
+# resharper_for_simple_types = use_var_when_evident
+# resharper_for_other_types = use_var_when_evident
 
 # Expression-bodied members
 csharp_style_expression_bodied_methods = false:suggestion
@@ -188,9 +276,9 @@ csharp_prefer_braces = false:none
 
 
 
-######################################################################################################################################################
-#### Formatting conventions - https://docs.microsoft.com/en-us/visualstudio/ide/editorconfig-code-style-settings-reference#formatting-conventions ####
-######################################################################################################################################################
+#####################################################################################################################################################
+#### Formatting conventions - https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/code-style-rule-options#formatting-conventions ####
+#####################################################################################################################################################
 
 # Organize usings
 dotnet_sort_system_directives_first = true
@@ -288,8 +376,6 @@ resharper_empty_block_style = multiline
 ###############################################################################################################################
 
 resharper_for_built_in_types = use_explicit_type
-resharper_for_simple_types = use_var
-resharper_for_other_types = use_var
 resharper_prefer_separate_deconstructed_variables_declaration = false
 resharper_prefer_explicit_discard_declaration = false
 resharper_instance_members_qualify_members = none
@@ -297,6 +383,8 @@ resharper_static_members_qualify_with = current_type
 resharper_static_members_qualify_members = none
 resharper_builtin_type_reference_style = use_keyword
 resharper_builtin_type_reference_for_member_access_style = use_keyword
+resharper_property_can_be_made_init_only_global_highlighting = hint
+resharper_collection_never_updated_global_highlighting = hint
 resharper_prefer_qualified_reference = false
 resharper_add_imports_to_deepest_scope = false
 resharper_qualified_using_at_nested_scope = false
@@ -360,6 +448,8 @@ resharper_align_linq_query = true
 resharper_align_multiline_binary_expressions_chain = false
 resharper_outdent_binary_ops = false
 resharper_align_multiline_calls_chain = false
+resharper_wrap_after_property_in_chained_method_calls = false
+resharper_keep_existing_property_patterns_arrangement = false
 resharper_outdent_dots = false
 resharper_align_multiline_array_and_object_initializer = false
 resharper_indent_anonymous_method_block = false
@@ -406,13 +496,13 @@ resharper_place_accessorholder_attribute_on_same_line = false
 resharper_place_accessor_attribute_on_same_line = false
 resharper_place_field_attribute_on_same_line = false
 resharper_wrap_parameters_style = chop_if_long
-# resharper_max_formal_parameters_on_line = 3
+resharper_max_formal_parameters_on_line = 4
 resharper_keep_existing_declaration_parens_arrangement = false
 resharper_wrap_before_declaration_lpar = false
 resharper_wrap_after_declaration_lpar = true
 resharper_wrap_before_declaration_rpar = false
 resharper_place_constructor_initializer_on_same_line = true
-resharper_keep_existing_expr_member_arrangement = false
+resharper_keep_existing_expr_member_arrangement = true
 resharper_place_expr_method_on_single_line = if_owner_is_single_line
 resharper_place_expr_property_on_single_line = if_owner_is_single_line
 resharper_place_expr_accessor_on_single_line = if_owner_is_single_line
@@ -423,7 +513,7 @@ resharper_wrap_multiple_type_parameter_constraints_style = chop_if_long
 resharper_wrap_before_type_parameter_langle = true
 resharper_wrap_before_extends_colon = true
 resharper_wrap_extends_list_style = chop_if_long
-resharper_keep_existing_declaration_block_arrangement = false
+resharper_keep_existing_declaration_block_arrangement = true
 resharper_place_abstract_accessorholder_on_single_line = true
 resharper_place_simple_blocks_on_single_line = false
 resharper_place_simple_declaration_blocks_on_single_line = true
@@ -431,8 +521,10 @@ resharper_place_simple_accessorholder_on_single_line = false
 resharper_place_accessor_with_attrs_holder_on_single_line = false
 resharper_place_simple_accessor_on_single_line = true
 resharper_place_simple_method_on_single_line = false
-resharper_keep_existing_enum_arrangement = false
+resharper_place_single_method_argument_lambda_on_same_line = false
+resharper_keep_existing_enum_arrangement = true
 resharper_max_enum_members_on_line = 1
+resharper_csharp_max_enum_members_on_line = 1
 resharper_place_simple_enum_on_single_line = false
 resharper_wrap_enum_declaration = chop_always
 resharper_new_line_before_while = false
@@ -446,12 +538,13 @@ resharper_place_simple_embedded_block_on_same_line = false
 resharper_place_simple_anonymousmethod_on_single_line = true
 resharper_keep_existing_initializer_arrangement = true
 resharper_place_simple_initializer_on_single_line = true
-resharper_max_initializer_elements_on_line = 1
+resharper_max_initializer_elements_on_line = 2
 resharper_wrap_object_and_collection_initializer_style = chop_if_long
 # resharper_max_array_initializer_elements_on_line = 3
 resharper_wrap_array_initializer_style = chop_if_long
 resharper_wrap_arguments_style = chop_if_long
-# resharper_max_invocation_arguments_on_line = 3
+resharper_max_invocation_arguments_on_line = 12
+resharper_max_primary_constructor_parameters_on_line = 3
 resharper_keep_existing_invocation_parens_arrangement = false
 resharper_wrap_before_invocation_lpar = false
 resharper_wrap_after_invocation_lpar = true
@@ -471,6 +564,7 @@ resharper_wrap_before_linq_expression = true
 resharper_place_linq_into_on_new_line = false
 resharper_wrap_verbatim_interpolated_strings = no_wrap
 resharper_keep_existing_list_patterns_arrangement = true
+resharper_treat_case_statement_with_break_as_simple = false
 
 
 
